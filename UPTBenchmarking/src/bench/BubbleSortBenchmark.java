@@ -6,6 +6,7 @@ public class BubbleSortBenchmark implements IBenchmark {
 
     @Override
     public void run() {
+        running = true;
         if (arrayToSort == null) {
             System.err.println("Array not initialized. Call initialize() first.");
             return;
@@ -70,6 +71,7 @@ public class BubbleSortBenchmark implements IBenchmark {
     }
 
     // Bubble Sort algorithm
+
     private void bubbleSort(int[] array) {
         int n = array.length;
         for (int i = 0; i < n - 1; i++) {
