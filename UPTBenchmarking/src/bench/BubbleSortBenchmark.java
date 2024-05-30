@@ -46,6 +46,11 @@ public class BubbleSortBenchmark implements IBenchmark {
     }
 
     @Override
+    public void run(String string){
+        System.err.println("You need to run this one with the array");
+    }
+
+    @Override
     public void initialize(int size) {
         arrayToSort = generateRandomArray(size);
         System.out.println("Array initialized with size " + size);

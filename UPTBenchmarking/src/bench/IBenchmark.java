@@ -4,6 +4,8 @@ public interface IBenchmark {
     // Method containing the core benchmarking code
     void run();
 
+    void run(String algorithm);
+
     // Method containing the core benchmarking code with parameters
     void run(int[] arrayToSort);
 
