@@ -1,5 +1,6 @@
 package logging;
 
+
 import java.util.concurrent.TimeUnit;
 
 public class ConsoleLogger implements ILog {
@@ -10,17 +11,38 @@ public class ConsoleLogger implements ILog {
     }
 
     @Override
-    public void writeTime(long value, logging.TimeUnit unit) {
-        System.out.println(value + " " + unit );
+    public void write(long integer) {
+        System.out.println(integer);
     }
 
     @Override
-    public void writeTime(String string, long value, logging.TimeUnit unit) {
-        System.out.println(string + " " + value + " " + unit);
+    public void write(long value, TimeUnit unit) {
+        System.out.println(convertToUnit(value, unit) + " " + unit );
+    }
+
+    @Override
+    public void write(String string, long value, TimeUnit unit) {
+        System.out.println(string + " " + convertToUnit(value, unit) + " " + unit);
     }
 
     @Override
     public void close() {
-        // No resources to close for ConsoleLogger
+
     }
+
+    private long convertToUnit(long value, TimeUnit unit) {
+        switch (unit) {
+            case NANOSECONDS:
+                return value;
+            case MICROSECONDS:
+                return value / 1_000;
+            case MILLISECONDS:
+                return value / 1_000_000;
+            case SECONDS:
+                return value / 1_000_000_000;
+            default:
+                throw new IllegalArgumentException("Unsupported time unit: " + unit);
+        }
+    }
+
 }

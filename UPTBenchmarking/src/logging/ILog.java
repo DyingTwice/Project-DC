@@ -1,12 +1,16 @@
 // ILogger.java
 package logging;
 
+
+import java.util.concurrent.TimeUnit;
 public interface ILog {
     void write(String message);
 
-    void writeTime(long value, TimeUnit unit);
+    void write(long integer);
 
-    void writeTime(String string, long value, TimeUnit unit);
+    void write(long value, TimeUnit unit);
+
+    void write(String string, long value, TimeUnit unit);
 
     void close();
 }
